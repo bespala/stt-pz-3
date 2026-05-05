@@ -219,7 +219,7 @@ sudo docker ps
 
 ## Крок 1. Підписка на topic
 
-Відкрити перший термінал:
+Відкриваємо перший термінал та вписуємо наступну команду:
 
 ```bash
 sudo docker exec -it mqtt-broker mosquitto_sub -h localhost -t test/lab
@@ -231,7 +231,7 @@ Subscriber очікує повідомлення.
 
 ## Крок 2. Публікація повідомлення
 
-Відкрити другий термінал:
+Відкриваємо другий термінал та вписуємо наступну команду:
 
 ```bash
 sudo docker exec -it mqtt-broker mosquitto_pub -h localhost -t test/lab -m "Hello MQTT from lab"
@@ -249,7 +249,7 @@ sudo docker exec -it mqtt-broker mosquitto_pub -h localhost -t test/lab -m "Hell
 
 ## Крок 2. Тестування QoS
 
-Відкрити перший термінал: 
+Відкриваємо перший термінал та вписуємо наступну команду: 
 
 ## Subscribe
 
@@ -259,7 +259,7 @@ sudo docker exec -it mqtt-broker mosquitto_sub -h localhost -t test/qos -q 1
 
 ---
 
-Відкрити другий термінал:
+Відкриваємо другий термінал та вписуємо наступну команду:
 
 ```bash
 sudo docker exec -it mqtt-broker mosquitto_pub -h localhost -t test/qos -q 1 -m "QoS message"
