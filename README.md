@@ -2,15 +2,19 @@
 
 ## Опис роботи
 
-Практична робота присвячена розгортанню та налаштуванню MQTT-брокера.
+Розгортання та налаштування MQTT-брокера
 
 Мета роботи:
 
-- ознайомитися з принципами роботи MQTT-протоколу;
-- розгорнути MQTT-брокер у Docker;
-- виконати налаштування базової конфігурації;
-- протестувати механізм Publish/Subscribe;
-- перевірити доставку повідомлень з використанням QoS.
+Розгорнути MQTT-брокер (Mosquitto / EMQX / HiveMQ)
+
+Налаштувати базову конфігурацію сервісу
+
+Ознайомитись із принципами роботи MQTT-протоколу
+
+Виконати публікацію та підписку на MQTT-топіки через Postman або інший MQTT-клієнт
+
+Перевірити працездатність сервісу через інструменти тестування
 
 ---
 
@@ -205,12 +209,9 @@ sudo docker-compose up -d
 ```bash
 sudo docker ps
 ```
+<img width="982" height="100" alt="Screenshot 2026-05-06 015957" src="https://github.com/user-attachments/assets/58584d00-974d-4298-bc3b-e0edc13e971d" />
 
-Очікуваний результат:
-
-```text
-mqtt-broker Up
-```
+Як бачимо, наш контейнер піднявся
 
 ---
 
@@ -237,18 +238,18 @@ sudo docker exec -it mqtt-broker mosquitto_pub -h localhost -t test/lab -m "Hell
 ```
 
 ---
+<img width="957" height="217" alt="Screenshot 2026-05-06 020415" src="https://github.com/user-attachments/assets/6e67c915-6ade-4a07-8962-cf017e6f5cfe" />
 
-## Очікуваний результат
 
-У першому терміналі з’явиться:
 
-```text
-Hello MQTT from lab
-```
+Як бачимо на скріншоті, на першому терміналі з’явиться:: Hello MQTT from lab
+
 
 ---
 
-# Тестування QoS
+## Крок 2. Тестування QoS
+
+Відкрити перший термінал: 
 
 ## Subscribe
 
@@ -258,51 +259,30 @@ sudo docker exec -it mqtt-broker mosquitto_sub -h localhost -t test/qos -q 1
 
 ---
 
-## Publish
+Відкрити другий термінал:
 
 ```bash
 sudo docker exec -it mqtt-broker mosquitto_pub -h localhost -t test/qos -q 1 -m "QoS message"
 ```
 
 ---
+<img width="952" height="212" alt="Screenshot 2026-05-06 020610" src="https://github.com/user-attachments/assets/85a735ec-790f-4513-9eec-b86b8900318c" />
 
-## Очікуваний результат
+бачимо повідомлення: QoS message
 
-```text
-QoS message
-```
 
 ---
 
-# Логи контейнера
 
-Перевірити логи:
-
-```bash
-sudo docker logs mqtt-broker
-```
-
----
-
-# Screenshots
-
-У папці `screenshots` збережені:
-
-1. Запущений Docker контейнер
-2. Subscriber terminal
-3. Publish результат
-4. QoS test
-
----
 
 # Висновок
 
 У ході виконання лабораторної роботи було:
 
-✅ Розгорнуто MQTT-брокер у Docker  
-✅ Виконано базове налаштування Mosquitto  
-✅ Перевірено механізм Publish/Subscribe  
-✅ Протестовано QoS  
-✅ Вивчено основні принципи роботи MQTT-протоколу  
+ Розгорнуто MQTT-брокер у Docker  
+ Виконано базове налаштування Mosquitto  
+ Перевірено механізм Publish/Subscribe  
+ Протестовано QoS  
+ Вивчено основні принципи роботи MQTT-протоколу  
 
 Практична робота підтвердила працездатність брокера та правильність конфігурації.
